@@ -2153,14 +2153,17 @@ body {
 }
 
 .liquid-ether-backdrop-archive {
-  background: #003a6f;
+  background: #b8d0e1;
 }
 
 .liquid-ether-backdrop-archive .threaded-horizon-image {
-  opacity: 0.16;
-  filter: saturate(0) contrast(1.3) brightness(0.52);
-  mix-blend-mode: screen;
-  transform: scale(1.05);
+  background-image: url("/images/atmosphere/weave-blue-mist.jpg");
+  background-position: 50% 50%;
+  opacity: 1;
+  filter: saturate(0.72) contrast(0.88) brightness(1.04);
+  mix-blend-mode: normal;
+  transform: scale(1.08);
+  animation: weaveBackdropDrift 16s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
 }
 
 .liquid-ether-backdrop-landing .liquid-ether-field {
@@ -2170,8 +2173,9 @@ body {
 }
 
 .liquid-ether-backdrop-archive .liquid-ether-field {
-  opacity: 0.16;
-  mix-blend-mode: screen;
+  opacity: 0.34;
+  filter: saturate(0.72) contrast(0.86);
+  mix-blend-mode: soft-light;
 }
 
 @keyframes weaveBackdropDrift {
@@ -2310,6 +2314,38 @@ body {
   white-space: nowrap;
 }
 
+.github-project-link {
+  position: absolute;
+  z-index: 40;
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 1px solid rgba(85, 68, 37, 0.22);
+  border-radius: 50%;
+  background: rgba(246, 232, 196, 0.9);
+  box-shadow: 0 9px 24px rgba(4, 31, 57, 0.18);
+  color: #08487f;
+  backdrop-filter: blur(10px);
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.github-project-link:hover,
+.github-project-link:focus-visible {
+  background: #fff4d9;
+  box-shadow: 0 12px 28px rgba(4, 31, 57, 0.22);
+  color: #063968;
+  outline: 1px solid rgba(6, 57, 104, 0.38);
+  outline-offset: 3px;
+  transform: translateY(-2px);
+}
+
+.landing-github-link {
+  position: fixed;
+  top: 1.2rem;
+  right: 2rem;
+}
+
 .weave-header {
   position: fixed;
   inset: 0 0 auto;
@@ -2405,28 +2441,14 @@ body {
 
 .archive-chapter-screen {
   min-height: 100svh;
-  background: #003a6f;
-  color: #f3dfaa;
+  background: transparent;
+  color: #063968;
   isolation: isolate;
 }
 
-.archive-chapter-screen::before {
-  display: block;
-  z-index: -2;
-  background-image: url("/images/dream-scenes/weave-cloud-fabric-bg.png");
-  background-position: center;
-  background-size: cover;
-  opacity: 0.12;
-  filter: saturate(0) contrast(1.4) brightness(0.55);
-  mix-blend-mode: screen;
-}
-
+.archive-chapter-screen::before,
 .archive-chapter-screen::after {
-  display: block;
-  z-index: -1;
-  background: rgba(0, 47, 91, 0.36);
-  opacity: 1;
-  mix-blend-mode: multiply;
+  display: none;
 }
 
 .archive-frame {
@@ -2443,12 +2465,12 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.2rem;
-  color: #d8b56d;
+  color: #ad8849;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 2rem;
   font-weight: 600;
   text-transform: uppercase;
-  text-shadow: 0 6px 18px rgba(0, 22, 44, 0.45);
+  text-shadow: 0 6px 18px rgba(4, 31, 57, 0.18);
 }
 
 .archive-brand svg {
@@ -2467,9 +2489,14 @@ body {
 }
 
 .archive-write-button {
-  right: 2rem;
+  right: 5.65rem;
   top: 1.2rem;
   z-index: 30;
+}
+
+.archive-github-link {
+  right: 2rem;
+  top: 1.2rem;
 }
 
 .archive-write-button:hover,
@@ -2489,7 +2516,7 @@ body {
   top: 6.9rem;
   z-index: 22;
   margin: 0;
-  color: rgba(237, 206, 139, 0.64);
+  color: rgba(6, 57, 104, 0.68);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 0.8rem;
   text-align: center;
@@ -2501,7 +2528,7 @@ body {
 
 .chapter-deck-kicker span {
   margin: 0 0.45rem;
-  color: rgba(237, 206, 139, 0.34);
+  color: rgba(6, 57, 104, 0.34);
 }
 
 .chapter-stage,
@@ -2787,7 +2814,7 @@ body {
 .threaded-progress {
   bottom: 1.25rem;
   width: 14rem;
-  color: rgba(237, 206, 139, 0.86);
+  color: rgba(6, 57, 104, 0.82);
 }
 
 .threaded-progress p {
@@ -2798,14 +2825,14 @@ body {
 
 .threaded-progress small {
   margin-top: 0.25rem;
-  color: rgba(237, 206, 139, 0.54);
+  color: rgba(6, 57, 104, 0.52);
   font-size: 0.62rem;
 }
 
 .empty-archive-state {
   z-index: 12;
   padding: 7rem 1.5rem 4rem;
-  color: #f7e8c4;
+  color: #063968;
 }
 
 .empty-archive-mark {
@@ -2819,7 +2846,7 @@ body {
 
 .empty-archive-kicker {
   margin-top: 1rem;
-  color: rgba(228, 192, 113, 0.72);
+  color: rgba(141, 101, 39, 0.82);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 0.86rem;
   text-transform: uppercase;
@@ -2828,13 +2855,13 @@ body {
 .empty-archive-state h1 {
   max-width: 34rem;
   margin-top: 0.8rem;
-  color: #f5e5bd;
+  color: #063968;
   font-size: 4.2rem;
   line-height: 0.9;
 }
 
 .empty-archive-copy {
-  color: rgba(246, 233, 201, 0.68);
+  color: rgba(6, 57, 104, 0.68);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.05rem;
 }
@@ -3124,6 +3151,11 @@ body {
     font-size: 0.6rem;
   }
 
+  .landing-github-link {
+    top: 0.85rem;
+    right: 0.85rem;
+  }
+
   .weave-header {
     height: 4.6rem;
     padding: 0.75rem 0.85rem;
@@ -3176,13 +3208,20 @@ body {
   }
 
   .archive-write-button {
-    right: 0.8rem;
+    right: 3.85rem;
     top: 0.85rem;
     width: 2.55rem;
     min-height: 2.45rem;
     justify-content: center;
     padding: 0;
     font-size: 0.7rem;
+  }
+
+  .archive-github-link {
+    top: 0.85rem;
+    right: 0.8rem;
+    width: 2.55rem;
+    height: 2.55rem;
   }
 
   .chapter-deck-kicker {

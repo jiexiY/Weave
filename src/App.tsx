@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   CalendarDays,
   Flower2,
+  Github,
   Moon,
   PenLine,
   Plus,
@@ -30,6 +31,7 @@ const moods = ["safe", "curious", "tender", "anxious", "hopeful", "quiet", "wist
 const liquidEtherColors = ["#9bbaec", "#bba3ba", "#e2d8ea"];
 const archiveRevealDelay = 1250;
 const entryTransitionDuration = 2300;
+const weaveGithubUrl = "https://github.com/jiexiY/Weave";
 
 function asLocalDreamDate(date: string) {
   return new Date(date.includes("T") ? date : `${date}T12:00:00`);
@@ -181,6 +183,20 @@ function LiquidEtherBackground({ variant }: { variant: "landing" | "archive" }) 
   );
 }
 
+function GithubProjectLink({ className }: { className: string }) {
+  return (
+    <a
+      className={`github-project-link ${className}`}
+      href={weaveGithubUrl}
+      aria-label="Open the Weave project on GitHub"
+      title="Open Weave on GitHub"
+      data-cursor="Open"
+    >
+      <Github size={19} strokeWidth={1.5} />
+    </a>
+  );
+}
+
 function AppNav({
   onArchive,
   onNew,
@@ -222,6 +238,7 @@ function AppNav({
 function LandingPage({ onEnter }: { onEnter: () => void }) {
   return (
     <main className="relative min-h-screen">
+      <GithubProjectLink className="landing-github-link" />
       <section className="landing-stage relative flex min-h-screen items-center justify-center px-6 py-20 text-center">
         <motion.div
           className="relative z-10 mx-auto flex max-w-5xl flex-col items-center"
@@ -302,6 +319,7 @@ function DreamArchiveHome({
   return (
     <main className="archive-world archive-chapter-screen relative z-10 h-screen overflow-hidden" data-cursor="Drag">
       <span className="archive-frame" aria-hidden="true" />
+      <GithubProjectLink className="archive-github-link" />
       <button
         className="archive-back-control"
         type="button"
