@@ -194,7 +194,8 @@ export function StarryTunnelTransition() {
       depthWrite: false,
     });
     const plane = new THREE.Mesh(geometry, material);
-    const clock = new THREE.Clock();
+    const timer = new THREE.Timer();
+    timer.connect(document);
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let animationFrame = 0;
 
@@ -214,8 +215,9 @@ export function StarryTunnelTransition() {
       );
     };
 
-    const render = () => {
-      uniforms.iTime.value += clock.getDelta() * (reduceMotion ? 0.12 : 1.25);
+    const render = (time: number) => {
+      timer.update(time);
+      uniforms.iTime.value = timer.getElapsed() * (reduceMotion ? 0.12 : 1.25);
       renderer.render(scene, camera);
       animationFrame = window.requestAnimationFrame(render);
     };
@@ -223,11 +225,12 @@ export function StarryTunnelTransition() {
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(mount);
     resize();
-    render();
+    animationFrame = window.requestAnimationFrame(render);
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
+      timer.dispose();
       geometry.dispose();
       material.dispose();
       renderer.dispose();
