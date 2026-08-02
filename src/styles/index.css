@@ -2145,9 +2145,11 @@ body {
 }
 
 .liquid-ether-backdrop-landing .threaded-horizon-image {
-  filter: saturate(0.8) contrast(0.92) brightness(1.03);
-  transform: scale(1.04);
-  animation: weaveBackdropDrift 18s ease-in-out infinite alternate;
+  background-image: url("/images/atmosphere/weave-blue-mist.jpg");
+  background-position: 50% 50%;
+  filter: saturate(0.72) contrast(0.88) brightness(1.04);
+  transform: scale(1.08);
+  animation: weaveBackdropDrift 16s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
 }
 
 .liquid-ether-backdrop-archive {
@@ -2162,8 +2164,9 @@ body {
 }
 
 .liquid-ether-backdrop-landing .liquid-ether-field {
-  opacity: 0.2;
-  mix-blend-mode: multiply;
+  opacity: 0.34;
+  filter: saturate(0.72) contrast(0.86);
+  mix-blend-mode: soft-light;
 }
 
 .liquid-ether-backdrop-archive .liquid-ether-field {
@@ -2172,8 +2175,18 @@ body {
 }
 
 @keyframes weaveBackdropDrift {
-  from { transform: scale(1.04) translate3d(-0.5%, -0.4%, 0); }
-  to { transform: scale(1.08) translate3d(0.7%, 0.5%, 0); }
+  0% {
+    background-position: 46% 48%;
+    transform: scale(1.08) translate3d(-0.8%, -0.5%, 0);
+  }
+  52% {
+    background-position: 53% 52%;
+    transform: scale(1.12) translate3d(0.5%, 0.3%, 0);
+  }
+  100% {
+    background-position: 49% 46%;
+    transform: scale(1.1) translate3d(0.8%, 0.6%, 0);
+  }
 }
 
 .initial-mist-veil {
@@ -2203,14 +2216,41 @@ body {
   backdrop-filter: none;
 }
 
+.landing-wordmark-reveal {
+  margin: -1.2rem -1.5rem;
+  padding: 1.2rem 1.5rem;
+}
+
 .landing-wordmark {
   margin: 0;
-  color: #064b89;
+  background-color: #0a4c83;
+  background-image: url("/images/atmosphere/weave-blue-mist.jpg");
+  background-position: 32% 45%;
+  background-size: 185% 230%;
+  background-blend-mode: multiply;
+  background-clip: text;
+  color: transparent;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 10rem;
   font-weight: 600;
   line-height: 0.72;
-  text-shadow: 4px 4px 0 rgba(180, 139, 73, 0.72), 0 20px 42px rgba(29, 79, 119, 0.18);
+  text-shadow: 3px 4px 0 rgba(180, 139, 73, 0.62), 0 20px 42px rgba(29, 79, 119, 0.16);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.65px rgba(4, 50, 87, 0.58);
+  animation: weaveWordmarkMist 10s ease-in-out infinite alternate;
+  will-change: background-position, filter;
+}
+
+@keyframes weaveWordmarkMist {
+  from {
+    background-position: 24% 42%;
+    filter: saturate(0.92) contrast(1.14);
+  }
+  to {
+    background-position: 72% 58%;
+    filter: saturate(1.06) contrast(1.24);
+  }
 }
 
 .landing-tagline {

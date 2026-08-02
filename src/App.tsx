@@ -232,9 +232,21 @@ function LandingPage({ onEnter }: { onEnter: () => void }) {
           <div className="landing-sigil" aria-hidden="true">
             <Flower2 size={24} strokeWidth={1.1} />
           </div>
-          <h1 className="landing-wordmark">
-            Weave
-          </h1>
+          <motion.div
+            className="landing-wordmark-reveal"
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            animate={{ clipPath: "inset(0 0% 0 0)" }}
+            transition={{ duration: 1.65, delay: 0.28, ease: "easeOut" }}
+          >
+            <motion.h1
+              className="landing-wordmark"
+              initial={{ filter: "blur(14px)", opacity: 0.35, x: -12 }}
+              animate={{ filter: "blur(0px)", opacity: 1, x: 0 }}
+              transition={{ duration: 1.45, delay: 0.32, ease: "easeOut" }}
+            >
+              Weave
+            </motion.h1>
+          </motion.div>
           <InkRevealText className="landing-tagline">
             A safe place to collect dreams and reconnect with your inner self.
           </InkRevealText>
