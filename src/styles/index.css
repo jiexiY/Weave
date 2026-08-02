@@ -2139,6 +2139,30 @@ body {
 }
 
 .threaded-horizon-image {
+  z-index: 0;
+}
+
+.live-dream-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: #b8d0e1;
+  filter: saturate(0.72) contrast(0.88) brightness(1.04);
+}
+
+.live-dream-backdrop-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 700ms ease;
+}
+
+.liquid-ether-field {
+  z-index: 2;
+}
+
+.threaded-horizon-image {
   background-image: url("/images/dream-scenes/weave-cloud-fabric-bg.png");
   background-position: center;
   background-size: cover;

@@ -17,6 +17,7 @@ import { createDreamEntry } from "./lib/dreamAnalysis";
 import { groupDreamsByMonth } from "./lib/monthGrouping";
 import { loadDreams, saveDreams } from "./lib/localStorage";
 import LiquidEther from "./components/LiquidEther";
+import LiveDreamBackdrop from "./components/LiveDreamBackdrop";
 import { StarryTunnelTransition } from "./components/StarryTunnelTransition";
 
 type View =
@@ -165,6 +166,7 @@ function LiquidEtherBackground({ variant }: { variant: "landing" | "archive" }) 
   return (
     <div className={`liquid-ether-backdrop liquid-ether-backdrop-${variant}`} aria-hidden="true">
       <div className="threaded-horizon-image" />
+      <LiveDreamBackdrop src="/images/atmosphere/weave-blue-mist.jpg" />
       <div className="liquid-ether-field">
         <LiquidEther
           mouseForce={20}
